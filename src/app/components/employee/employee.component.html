@@ -1,0 +1,59 @@
+<h1>Employee</h1>
+<hr>
+<div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Search Employee Id" #textId>
+    <div class="input-group-append">
+        <button class="btn btn-primary" (click)="getEmployee(textId.value)"><i class="fa fa-search"></i></button>
+    </div>
+</div>
+<hr>
+<ng-container *ngIf="notFound">
+    Employee info not found
+</ng-container>
+
+<ng-container *ngIf="employee">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{employee.employeeName}}</h5>
+            <div>
+                Id: {{employee.id}}
+            </div>
+            <div>
+                Age: {{employee.employeeAge}}
+            </div>
+            <div>
+                Profile Image: {{employee.profileImage}}
+            </div>
+            <div>
+                Salary: {{employee.employeeSalary}}
+            </div>
+            <div>
+                Anual Salary: {{employee.employeeAnualSalary}}
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="employees">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Profile Image</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Anual Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td scope="row">{{employee.id}}</td>
+                <td>{{employee.employeeName}}</td>
+                <td>{{employee.employeeAge}}</td>
+                <td>{{employee.profileImage}}</td>
+                <td>{{employee.employeeSalary}}</td>
+                <td>{{employee.employeeAnualSalary}}</td>
+            </tr>
+        </tbody>
+    </table>
+</ng-container>
